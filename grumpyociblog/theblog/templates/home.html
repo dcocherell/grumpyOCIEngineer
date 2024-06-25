@@ -1,1 +1,21 @@
-<h1>Hello World</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<h1>OCI Learning Journey</h1>
+<hr>
+
+<br>
+{% for post in object_list %}
+    <div class="container mb-4">
+        <div class="card shadow-sm rounded">
+            <div class="card-body">
+                <h2 class="card-title"><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - <small>{{ post.author.first_name }} {{ post.author.last_name }}</small></h2>
+                <p class="card-text">{{ post.body|truncatechars:25 }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
