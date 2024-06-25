@@ -1,0 +1,29 @@
+// __pycache__ directory
+__pycache__
+
+// .pyc files
+*.pyc
+
+// .vscode directory
+.vscode
+
+// .idea directory
+.idea
+
+// .DS_Store file
+.DS_Store
+
+// .env file
+.env
+
+// .pytest_cache directory
+.pytest_cache
+
+// .mypy_cache directory
+.mypy_cache
+
+// database file
+db.sqlite3
+
+
+
