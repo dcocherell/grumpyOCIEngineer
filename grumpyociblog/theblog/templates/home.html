@@ -1,24 +1,49 @@
 {% extends 'base.html' %}
 
-{% block content %}
-
-<br>
-<h1>OCI Learning Journey</h1>
-<hr>
-
-<br>
-{% for post in object_list %}
-    <div class="container mb-4">
-        <a href="{% url 'article-detail' post.pk %}" class="text-decoration-none card-link">
-            <div class="card shadow rounded">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.title }} - <small>{{ post.author.first_name }} {{ post.author.last_name }}</small></h2>
-                    <p class="card-text">{{ post.body|truncatechars:25 }}</p>
-                </div>
-            </div>
-        </a>
-    </div>
-{% endfor %}
+{% block extra_head %}
 
 {% endblock %}
 
+{% block content %}
+</br>
+
+<div class="header-container">
+    <h1>There And Back Again: An OCI Learning Journey</h1>
+    </br>
+    <form class="d-flex search-form" role="search">
+        <input class="form-control me-2 shadow border" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary shadow border" type="submit">Search</button>
+    </form>
+</div>
+
+</br>
+
+<div class="container mt-4 shadow rounded h-100">
+    <br>
+    <div class="row">
+        {% for post in object_list %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow rounded h-100 card-custom-background">
+                <div class="card-body d-flex flex-column">
+                    <h2 class="card-title h4">
+                        <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+                    </h2>
+                    <p class="card-text flex-grow-1">{{ post.body|truncatechars:100 }}</p>
+                    <p class="author mt-2 mb-0">
+                        By {{ post.author.first_name }} {{ post.author.last_name }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'update-post' post.pk %}" class="btn btn-outline-primary btn-sm btn-update">Update</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center">No posts available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
