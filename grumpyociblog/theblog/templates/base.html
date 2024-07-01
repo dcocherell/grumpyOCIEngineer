@@ -163,6 +163,7 @@
                             Browse
                         </a>
                         <ul class="dropdown-menu">
+                                <li><hr class="dropdown-divider"></li>
                             {% for category in categories %}
                                 <li><a class="dropdown-item" href="{% url 'category' category.name|slugify %}">{{ category.name }}</a></li>
                             {% empty %}

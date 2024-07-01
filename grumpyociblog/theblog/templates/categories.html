@@ -27,9 +27,6 @@
                     <p class="author mt-2 mb-0">
                         By: {{ post.author.first_name }} {{ post.author.last_name }}
                     </p>
-                    <p class="author mt-2 mb-0">
-                        {{ post.pub_date|date:"F d, Y" }} | {{post.category}}
-                    </p>
                 </div>
                 {% if user.is_authenticated %}
                 <div class="card-footer">
@@ -39,8 +36,8 @@
             </div>
         </div>
         {% empty %}
-        <div class="col-12">
-            <p class="text-center">No posts available.</p>
+        <div class="col-12" style="color: #000000;">
+            <p class="text-center">No posts available for this category.</p>
         </div>
         {% endfor %}
     </div>

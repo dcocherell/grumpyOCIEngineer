@@ -19,7 +19,7 @@
         <p class="card-text">{{ post.body|safe }}</p>
     </div>
     <p class="author mt-2 mb-0">
-        Category tag: {{ post.category }}
+        <a>Category tag: </a><a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
     </p>
 </div>
 </br>
