@@ -6,7 +6,7 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if user == post.author %}
     <br>
     <br>
     <div class="post shadow">

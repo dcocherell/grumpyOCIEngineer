@@ -36,7 +36,7 @@
                         {{ post.pub_date|date:"F d, Y" }} | {{post.category}}
                     </p>
                 </div>
-                {% if user.is_authenticated %}
+                {% if user == post.author %}
                 <div class="card-footer">
                     <a href="{% url 'update-post' post.pk %}" class="btn btn-outline-primary btn-sm btn-update">Update</a>
                 </div>

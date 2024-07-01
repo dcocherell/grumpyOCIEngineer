@@ -148,6 +148,19 @@
                     {% endif %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Browse
+                        </a>
+                        <ul class="dropdown-menu">
+                                <!-- <li><hr class="dropdown-divider"></li> -->
+                            {% for category in categories %}
+                                <li><a class="dropdown-item" href="{% url 'category' category.name|slugify %}">{{ category.name }}</a></li>
+                            {% empty %}
+                                <li><a class="dropdown-item" href="#">No categories available</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Resources
                         </a>
                         <ul class="dropdown-menu">
@@ -156,19 +169,6 @@
                             <li><a class="dropdown-item" href="https://mylearn.oracle.com" target="_blank">Oracle University</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Mq0yEI_xpb8&list=PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB&ab_channel=TigerProductions" target="_blank">Stress Relief</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Browse
-                        </a>
-                        <ul class="dropdown-menu">
-                                <li><hr class="dropdown-divider"></li>
-                            {% for category in categories %}
-                                <li><a class="dropdown-item" href="{% url 'category' category.name|slugify %}">{{ category.name }}</a></li>
-                            {% empty %}
-                                <li><a class="dropdown-item" href="#">No categories available</a></li>
-                            {% endfor %}
                         </ul>
                     </li>
                 </ul>

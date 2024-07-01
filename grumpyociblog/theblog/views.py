@@ -44,9 +44,6 @@ def CategoryView(request, cats):
     category_name = cats.replace('-', ' ')
     category_posts = Post.objects.filter(category__iexact=category_name)
     
-    print(f"Category: {category_name}")
-    print(f"Number of posts: {category_posts.count()}")
-    
     return render(request, 'categories.html', {
         'cats': cats.title().replace('-', ' '),
         'category_posts': category_posts

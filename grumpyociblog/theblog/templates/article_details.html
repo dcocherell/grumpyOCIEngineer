@@ -24,9 +24,10 @@
 </div>
 </br>
 <a href="{% url 'home' %}" class="btn btn-secondary shadow border">Home</a>
-{% if user.is_authenticated %}
+{% if user == post.author %}
 <a> | </a>
 <a href="{% url 'update-post' post.pk %}" class="btn btn-secondary shadow border">Edit</a>
+
 {% endif %}
 
 
