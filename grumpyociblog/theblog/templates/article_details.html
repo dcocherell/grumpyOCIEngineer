@@ -16,8 +16,11 @@
             {{ post.pub_date|date:"F d, Y" }}
         </p>
     </br>
-        <p class="card-text">{{ post.body }}</p>
+        <p class="card-text">{{ post.body|safe }}</p>
     </div>
+    <p class="author mt-2 mb-0">
+        Category tag: {{ post.category }}
+    </p>
 </div>
 </br>
 <a href="{% url 'home' %}" class="btn btn-secondary shadow border">Home</a>

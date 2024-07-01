@@ -21,9 +21,7 @@
             </form>
         </div>
             <br>
-            {% if user.is_authenticated %}
             <button id="deleteButton" class="btn btn-danger shadow border">Delete</button>
-            {% endif %}
             <a> | </a>
             <a href="{% url 'update-post' post.pk%}" class="btn btn-secondary shadow border">Cancel</a>
     </div>
@@ -34,7 +32,7 @@
             document.getElementById('deleteForm').submit();
         });
     </script>
-    
+
     {% else %}
 
     <div class="post shadow">

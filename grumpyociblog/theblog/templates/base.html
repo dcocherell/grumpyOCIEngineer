@@ -140,7 +140,10 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'add_post' %}">New Post</a>
+                        <a class="nav-link" href="{% url 'add-post' %}">New Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add-category' %}">New Category</a>
                     </li>
                     {% endif %}
                     <li class="nav-item dropdown">
@@ -153,6 +156,18 @@
                             <li><a class="dropdown-item" href="https://mylearn.oracle.com" target="_blank">Oracle University</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="https://www.youtube.com/watch?v=Mq0yEI_xpb8&list=PLtDp75hOzOlbD7m-Gb2t4dZqyYx7dq0iB&ab_channel=TigerProductions" target="_blank">Stress Relief</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Browse
+                        </a>
+                        <ul class="dropdown-menu">
+                            {% for category in categories %}
+                                <li><a class="dropdown-item" href="{% url 'category' category.name|slugify %}">{{ category.name }}</a></li>
+                            {% empty %}
+                                <li><a class="dropdown-item" href="#">No categories available</a></li>
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>
@@ -175,8 +190,10 @@
                             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
                             <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
                             {% endif %}
+                            {% if user.is_authenticated %}
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">{{ user.first_name }} {{ user.last_name}}</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>

@@ -1,32 +1,23 @@
 {% extends 'base.html' %}
 {% block title %} 
-    New Post
+    New Category
 {% endblock %}
 {% block content %}
 
-
 {% if user.is_authenticated %}
 <br>
-<h1>New Post</h1>
+<h1>Create new category tag</h1>
 
 <div class="post shadow">
     <form method="POST" class="form-group">
         {% csrf_token %}
         <div class="form-group">
-            <label for="{{ form.title.id_for_label }}" style="color: #000000;">Title:</label>
-            {{ form.title }}
+            <br>
+            {{ form.name.label_tag }}
+            {{ form.name }}
         </div>
         <br>
-        <div class="form-group">
-            <label for="{{ form.body.id_for_label }}" style="color: #000000;">Body:</label>
-            {{ form.body }}
-        </div>
         <br>
-        <div class="form-group">
-            <label for="{{ form.category.id_for_label }}" style="color: #000000;">Category:</label>
-            {{ form.category }}
-        </div>
-    </br>
         <button type="submit" class="btn btn-secondary shadow border">Submit</button>
     </form>
 </div>

@@ -16,14 +16,9 @@
             <form method="POST" class="form-group">
                 {% csrf_token %}
                 {{ form.as_p }}
-                {% if user.is_authenticated %}
-                    <input type="hidden" name="author" value="{{ user.pk }}">
-                {% endif %}
-                {% if user.is_authenticated %}
                 <button type="submit" class="btn btn-secondary shadow border">Update</button>
                 <a> | </a>
                 <a href="{% url 'delete-post' post.pk %}" class="btn btn-danger shadow border">Delete</a>
-                {% endif %}
             </form>
         </div>
     </div>
