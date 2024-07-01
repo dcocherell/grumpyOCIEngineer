@@ -1,19 +1,32 @@
 {% extends 'base.html' %}
-    {% block title %} 
-        New Post
-    {% endblock %}
+{% block title %} 
+    New Post
+{% endblock %}
 {% block content %}
 
 <br>
 <h1>New Post</h1>
 
-<div class="form-group">
-    <form method="POST">
+<div class="post shadow">
+    <form method="POST" class="form-group">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-secondary shadow">Submit</button>
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}" style="color: #000000;">Title</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.author.id_for_label }}" style="color: #000000;">Author</label>
+            {{ form.author }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.body.id_for_label }}" style="color: #000000;">Body</label>
+            {{ form.body }}
+        </div>
+    </br>
+        <button type="submit" class="btn btn-secondary shadow border">Submit</button>
+    </form>
 </div>
-
+</br>
+<a href="{% url 'home' %}" class="btn btn-secondary shadow border">Home</a>
 
 {% endblock %}
-

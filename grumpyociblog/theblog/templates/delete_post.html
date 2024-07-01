@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} 
+    Delete Post
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<div class="post shadow">
+    <h2 class="post-title">Delete Post</h2>
+    </br>
+    <div class="post-detail" style="color: #000000;">
+        <h3>Delete post: {{ post.title }}</h3>
+        <form id="deleteForm" method="POST" class="form-group">
+            {% csrf_token %}
+            <strong>Are you sure you want to delete this post?</strong>
+            <br>
+        </form>
+    </div>
+        <br>
+        <button id="deleteButton" class="btn btn-danger shadow border">Delete</button>
+        <a> | </a>
+        <a href="{% url 'update-post' post.pk%}" class="btn btn-secondary shadow border">Cancel</a>
+</div>
+</br>
+
+<script>
+    document.getElementById('deleteButton').addEventListener('click', function() {
+        document.getElementById('deleteForm').submit();
+    });
+</script>
+{% endblock %}

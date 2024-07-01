@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
-    {% block title %} 
-        Edit Post
-    {% endblock %}
-{% block content %}
 
-<br>
-<h1>Edit Post</h1>
-
-<div class="form-group">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-secondary shadow border">Update</button>
-</div>
-
-
+{% block title %} 
+    Edit Post
 {% endblock %}
 
+{% block content %}
+<br>
+<br>
+<div class="post shadow">
+    <h2 class="post-title">Edit Post</h2>
+    </br>
+    <div class="post-detail">
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary shadow border">Update</button>
+            <a> | </a>
+            <a href="{% url 'delete-post' post.pk %}" class="btn btn-danger shadow border">Delete</a>
+        </form>
+    </div>
+</div>
+</br>
+<a href="{% url 'home' %}" class="btn btn-secondary shadow border">Home</a>
+<a> | </a>
+<a href="{% url 'article-detail' post.pk %}" class="btn btn-secondary shadow border">Back to Post</a>
+{% endblock %}
