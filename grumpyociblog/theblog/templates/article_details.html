@@ -12,6 +12,9 @@
         </br>
     <div class="post-detail">
         <h5 class="card-title"><small>By: {{ post.author.first_name }} {{ post.author.last_name }}</small></h5>
+        <p class="author mt-2 mb-0">
+            {{ post.pub_date|date:"F d, Y" }}
+        </p>
     </br>
         <p class="card-text">{{ post.body }}</p>
     </div>

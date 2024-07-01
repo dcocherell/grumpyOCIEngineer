@@ -30,7 +30,10 @@
                     </h2>
                     <p class="card-text flex-grow-1">{{ post.body|truncatechars:100 }}</p>
                     <p class="author mt-2 mb-0">
-                        By {{ post.author.first_name }} {{ post.author.last_name }}
+                        By: {{ post.author.first_name }} {{ post.author.last_name }}
+                    </p>
+                    <p class="author mt-2 mb-0">
+                        {{ post.pub_date|date:"F d, Y" }}
                     </p>
                 </div>
                 <div class="card-footer">
