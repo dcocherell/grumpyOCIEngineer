@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
 <br>
 <br>
 <div class="post shadow">
@@ -20,4 +22,16 @@
     <a> | </a>
     <a href="{% url 'add_post' %}" class="btn btn-secondary shadow border">Add Post</a>
 </div>
+
+{% else %}
+    
+        <div class="post shadow">
+            <h2 class="post-title">You shouldn't be here...</h2>
+                </br>
+            <div class="post-detail">
+                <h5 class="card-title"><small>It's a big internet, easy to get lost.</small></h5>
+            </div>
+        </div>
+
+{% endif %}
 {% endblock %}
